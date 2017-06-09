@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tspApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+
+    <div ng-controller="mainCtrl as vm" class="form">
+
+        <div class="row">
+            <div class="col-xs-8">
+                <div>
+                    <label>Condition</label> {{::vm.tnrEvent.Condition}}
+                </div>
+                <div>
+                    <label>Standard</label> {{::vm.tnrEvent.Standard}}
+                </div>
+            </div>
+            <div class="col-xs-4 ">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-xs-6">Time To Train (Hours)</label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" name="timeToTrain" ng-model="vm.TimeToTrain">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-6">Time To Test (Minutes)</label>
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" name="timeToTest" ng-model="vm.TimeToTest">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+            <label>Performance Steps</label>
+        </div>
+        <ol>
+            <li ng-repeat="performanceStep in ::vm.tnrEvent.PerformanceSteps | orderBy: 'ListPosition'">
+                {{::performanceStep.Title}}
+            </li>
+        </ol>
+
+        <div>
+            <label>Prerequisite Events</label>
+        </div>
+        <ul>
+            <li ng-repeat="preReqEvent in ::vm.tnrEvent.PreReqEvents">
+                {{::preReqEvent.Title}}
+            </li>
+        </ul>
+
+        <div>
+            <label>References</label>
+        </div>
+        <ol>
+            <li ng-repeat="reference in ::vm.tnrEvent.References | orderBy: 'Title'">
+                {{::reference.Title}}
+            </li>
+        </ol>
+
+
+        <div>
+            <label>Additional Range/Training Area</label>
+            {{::vm.tnrEvent.Range}}
+        </div>
+
+        <div>
+            <label>Aircraft</label>
+            {{::vm.tnrEvent.Aircraft}}
+        </div>
+
+        <div>
+            <label>Rooms / Building</label>
+            {{::vm.tnrEvent.Rooms}}
+        </div>
+
+        <div>
+            <label>Equipment</label>
+            {{::vm.tnrEvent.Equipment}}
+        </div>
+
+        <div>
+            <label>Material</label>
+            {{::vm.tnrEvent.Material}}
+        </div>
+
+        <div>
+            <label>Units / Personnel</label>
+            {{::vm.tnrEvent.UnitsAndPersonnel}}
+        </div>
+
+        <div>
+            <label>Other Support Reqs</label>
+            {{::vm.tnrEvent.OtherSupportingRequirements}}
+        </div>
+
+        <div>
+            <label>Administrative Instructions</label>
+            {{::vm.tnrEvent.AdministrativeInstructions}}
+        </div>
+
+        <div ng-if="vm.tnrEvent.RoadMiles">
+            <label>Road Miles</label>
+            {{::vm.tnrEvent.RoadMiles}}
+        </div>
+
+        <div>
+            <label>Equipment Hours</label>
+            {{::vm.tnrEvent.EquipmentHours}}
+        </div>
+
+        <div>
+            <label>Special Personnel Certs</label>
+            {{::vm.tnrEvent.SpecialPersonnelCerts}}
+        </div>
+
+        <div class="form-horizontal">
+            <legend>Questions</legend>
+            <div class="form-group" ng-repeat="question in vm.Questions | orderBy: 'Sequence'">
+                <div class="col-xs-1">
+                    <button class="btn btn-danger pull-right" ng-click="vm.deleteQuestion(question)">X</button>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="(Enter Question)" ng-model="question.Text">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-offset-1 col-sm-1">
+                    <button type="button" ng-click="vm.addQuestion()" class=" btn btn-primary">Add Question</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">git
+                    <label for="Instructor Note" class="control-label">Instructor Note</label>
+                    <textarea class="form-control" rows="5" id="Instructor Note" placeholder="Instructor Note" ng-model="vm.InstructorNote"></textarea>
+                </div>
+            </div>
+
+            <div ng-repeat="performanceStep in vm.tnrEvent.PerformanceSteps | orderBy: 'ListPosition'">
+                <strong>Performance Step {{::performanceStep.ListPosition}}:</strong>{{::performanceStep.Title}}
+                <textarea ui-tinymce="vm.tinymceOptions" ng-model="performanceStep.Title"></textarea>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+<script src="bower_components/tinymce/tinymce.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
+<script src="app.js"></script>
+<script src="foo.js"></script>
+
+
+</body>
+</html>
