@@ -1,8 +1,13 @@
-<button uib-popover="" type="button" class="btn btn-default"><i class="glyphicon glyphicon-comment text-info"></i> </button>
+<button popover-placement="auto bottom" uib-popover-template="'myPopoverTemplate.html'" ng-click="vm.isOpen=true"
+        popover-title="Comment" type="button" class="btn " ng-class="vm.comment ? 'btn-primary' : 'btn-default'"
+        popover-is-open="vm.isOpen">
+    <i class="glyphicon glyphicon-comment"></i>
+</button>
+
 <script type="text/ng-template" id="myPopoverTemplate.html">
-    <div>{{dynamicPopover.content}}</div>
-    <div class="form-group">
-        <label>Comment:</label>
-        <input type="text" ng-model="dynamicPopover.title" class="form-control">
-    </div>
+    <textarea ng-if="vm.editing" rows="5" ng-model="vm.comment" class="form-control"></textarea>
+    <pre class="wrap" ng-if="!vm.editing">{{vm.comment}}</pre>
+    <a href="javascript:void(0)" ng-click="vm.editClick()" ng-show="!vm.editing">Edit</a>
+    <a href="javascript:void(0)" ng-click="vm.okClick()" ng-show="vm.editing">OK</a>
+    <a href="javascript:void(0)" ng-click="vm.cancelClick()" ng-show="vm.editing">Cancel</a>
 </script>

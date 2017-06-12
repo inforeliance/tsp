@@ -30,7 +30,7 @@
     <div ng-controller="mainCtrl as vm" class="form">
 
         <div class="row">
-            <div class="col-xs-8">
+            <div class="col-xs-7">
                 <div>
                     <label>Condition</label> {{::vm.tnrEvent.Condition}}
                 </div>
@@ -43,18 +43,23 @@
                     <div class="form-group">
                         <label for="timeToTrain" class="control-label col-xs-6">Time To Train (Hours)</label>
                         <div class="col-xs-6">
-                            <input type="text" id="timeToTrain" class="form-control" name="timeToTrain" ng-model="vm.TimeToTrain">
+                            <input type="text" id="timeToTrain" class="form-control" name="timeToTrain"
+                                   ng-model="vm.TimeToTrain">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="timeToTest" class="control-label col-xs-6">Time To Test (Minutes)</label>
                         <div class="col-xs-6">
-                            <input id="timeToTest" type="text" class="form-control" name="timeToTest" ng-model="vm.TimeToTest">
+                            <input id="timeToTest" type="text" class="form-control" name="timeToTest"
+                                   ng-model="vm.TimeToTest">
                         </div>
                     </div>
                 </div>
 
+            </div>
+            <div class="col-xs-1">
+                <comment comment="vm.TimeToTrainComment"></comment>
             </div>
         </div>
 
@@ -143,14 +148,10 @@
         <div class="form-horizontal">
             <legend>Questions</legend>
             <div class="form-group" ng-repeat="question in vm.Questions | orderBy: 'Sequence'">
-                <div class="col-xs-1">
-                    <button class="btn btn-danger pull-right" ng-click="vm.deleteQuestion(question)">X</button>
-                    <label class="control-label">{{question.Sequence}}.</label>
-                </div>
-                <div class="col-sm-10">
-
-                    <input type="text" class="form-control" placeholder="(Enter Question)" ng-model="question.Text">
-                </div>
+                <button class="btn btn-sm btn-danger " ng-click="vm.deleteQuestion(question)"><i class="glyphicon-remove glyphicon"></i></button>
+                <comment comment="question.Comment"></comment>
+                <label class="control-label">{{question.Sequence}}.</label>
+                <input type="text" class="form-control" placeholder="(Enter Question)" ng-model="question.Text">
             </div>
 
             <div class="form-group">
@@ -160,7 +161,9 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label">Instructor Note</label>
+                <label class="control-label">Instructor Note
+                    <comment comment="vm.InstructorNoteComment"></comment>
+                </label>
                 <div ui-tinymce="tinymceOptions" ng-model="vm.InstructorNote" class="border"></div>
             </div>
         </div>
@@ -171,6 +174,8 @@
 
             <label for="LessonID" class="control-label">Lesson Name</label>
             <input type="text" class="form-control" id="LessonName" ng-model="vm.LessonName">
+
+            <comment comment="vm.LessonIDComment"></comment>
         </div>
 
         <hr>
@@ -179,8 +184,10 @@
         <ul ui-sortable="{handle: '.myHandle'}" ng-model='vm.Sections' class="list-group">
             <li class="list-group-item" ng-repeat="section in vm.Sections">
                 <div class="section">
-                    <div class="btn myHandle"><i class="glyphicon-sort glyphicon"></i></div>
-                    <button ng-click="vm.deleteSection(section)" class="btn btn-sm btn-danger">X</button>
+                    <div class="btn myHandle text-muted"><i class="glyphicon-th glyphicon"></i></div>
+                    <button ng-click="vm.deleteSection(section)" class="btn btn-sm btn-danger"><i
+                            class="glyphicon-remove glyphicon"></i></button>
+                    <comment comment="section.Comment"></comment>
                     <non-performance-step-section section="section"></non-performance-step-section>
                 </div>
             </li>
@@ -195,14 +202,7 @@
         <div ng-repeat="performanceStep in vm.tnrEvent.PerformanceSteps | orderBy: 'ListPosition'">
             <performance-step-section performance-step="performanceStep"></performance-step-section>
         </div>
-
-
     </div>
 </div>
-
-
-
-
-
 </body>
 </html>

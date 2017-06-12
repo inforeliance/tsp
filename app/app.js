@@ -78,6 +78,9 @@ angular.module('tspApp', ['ui.tinymce', 'ui.sortable','ui.bootstrap']).controlle
             scope: {
                 section: '=section'
             },
+            controller: function(){
+              var vm=this;
+            },
             controllerAs: 'vm',
             bindToController: true
         };
@@ -85,12 +88,26 @@ angular.module('tspApp', ['ui.tinymce', 'ui.sortable','ui.bootstrap']).controlle
     .directive('comment', function () {
         return {
             restrict: 'E',
-            templateUrl: 'non-perf-step-section.html',
+            templateUrl: 'comment.html',
             scope: {
-                section: '=section'
+                comment: '=comment'
             },
             controller: function () {
                 var vm = this;
+                vm.editClick = function(){
+                    vm.originalComment = vm.comment;
+                    vm.editing=true;
+                };
+
+                vm.cancelClick = function(){
+                    vm.comment = vm.originalComment;
+                    vm.editing=false;
+                };
+
+                vm.okClick = function(){
+                    vm.editing=false;
+                    vm.isOpen=false;
+                };
             },
             controllerAs: 'vm',
             bindToController: true

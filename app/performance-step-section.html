@@ -2,8 +2,9 @@
     <h4><strong>Performance Step {{::vm.performanceStep.ListPosition}}:</strong>{{::vm.performanceStep.Title}}</h4>
     <ul ui-sortable="{handle: '.myHandle'}" ng-model='vm.performanceStep.Sections' class="list-group">
         <li class="list-group-item" ng-repeat="section in vm.performanceStep.Sections">
-            <div class="btn myHandle"><i class="glyphicon-sort glyphicon"></i></div>
-            <button ng-click="vm.DeleteSection(section)" class="btn btn-sm btn-danger">X</button>
+            <div class="btn myHandle"><i class="glyphicon-th text-muted glyphicon"></i></div>
+            <button ng-click="vm.DeleteSection(section)" class="btn btn-sm btn-danger"><i class="glyphicon-remove glyphicon"></i></button>
+            <comment comment="section.Comment"></comment>
             <h4 class="list-group-item-heading">Section {{$index+1}} Text</h4>
             <div ui-tinymce="$root.tinymceOptions" ng-model="section.SectionText" class="border"></div>
         </li>
@@ -14,6 +15,6 @@
     </div>
 
     <hr>
-    <strong>Instructor Note</strong>
+    <strong>Instructor Note <comment comment="vm.performanceStep.InstructorNoteComment"></comment></strong>
     <div ui-tinymce="$root.tinymceOptions" ng-model="vm.performanceStep.InstructorNote" class="border"></div>
 </div>
