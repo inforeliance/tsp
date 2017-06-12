@@ -15,13 +15,8 @@ angular.module('tspApp').constant('theEvent', {
     "TempFunctionalAreaId": "",
     "InitTrainSetCode": "MOJT",
     "SequenceNumber": "702",
-    "TempSequenceNumber": "",
     "Standard": "To ensure all assets and personnel are moved safely and efficiently.",
     "SustainmentInterval": 12,
-    "InUse": false,
-    "LinkedEventCount": 0,
-    "EventType": "New",
-    "GenomeApprovedEventCode": "",
     "RejectionReason": null,
     "Range": 'This is the range',
     "Aircraft": 'Some aircraft',
@@ -36,44 +31,33 @@ angular.module('tspApp').constant('theEvent', {
     "EquipmentHours": 'some equip hours',
     "SpecialPersonnelCerts": null,
     "Ordnance": 'some other ordnance',
-    "EventStatus": {
-        "code": 5
-    },
-    "OwnerCommunityId": "938ED488-A7DF-4686-A786-4FBB057E8B28",
     "Ranges": [],
     "References": [
         {
-            "ReferenceID": "{c24e3016-9565-417f-90f4-614c68bea6e1}",
             "PublicationID": "CFR 49",
             "Title": "Code of Federal Regulations - Hazardous Materials"
         },
         {
-            "ReferenceID": "{3d1ae20b-5721-4830-9fa2-14348a3643fc}",
             "PublicationID": "COMNAVSURFLANTINST 3000.3",
             "Title": "Landing Force Spaces and Material Aboard COMNAVSURFLANT Ships"
         },
         {
-            "ReferenceID": "{e52658aa-4d01-4038-a381-e8dc544f2552}",
             "PublicationID": "COMNAVSURFLANTINST 3340.3 C",
             "Title": "Wet Well Operations Manual"
         },
         {
-            "ReferenceID": "{ddd9549b-d2a3-43eb-b865-b840e4ec2005}",
             "PublicationID": "DOD 4500.9-R",
             "Title": "Defense Transportation Regulation Parts I, II & III"
         },
         {
-            "ReferenceID": "{9b9bcfd6-606f-4263-b4a2-19ca5c9e8dd2}",
             "PublicationID": "FMFM 1-5",
             "Title": "Maritime Prepositioning Force (MPF) OPS"
         },
         {
-            "ReferenceID": "{41c6ba63-7629-4841-916b-8e9f3ed3d216}",
             "PublicationID": "JOINT PUB 3-02.2",
             "Title": "Joint Doctrine for Amphibious Embarkation"
         },
         {
-            "ReferenceID": "{33e3cea7-6377-444c-a9b5-392706fdd398}",
             "PublicationID": "MCRP 4-11C",
             "Title": "Combat Cargo Operations Handbook"
         }
@@ -81,108 +65,35 @@ angular.module('tspApp').constant('theEvent', {
     "PerformanceSteps": [
         {
             "PerformanceStepId": "{412FFAFC-EC29-C85C-E040-A8C02A162DC2}",
-            "EventId": "{412FFAFC-E90B-C85C-E040-A8C02A162DC2}",
             "Title": "Coordinate the use of equipment at the port facility.",
-            "ListPosition": 2,
-            "IsDeleted": -2147483648,
-            "CreatedBy": "",
-            "CreatedDate": "0001-01-01T00:00:00",
-            "EditedBy": "",
-            "EditedDate": "0001-01-01T00:00:00",
-            "ID": "{412FFAFC-EC29-C85C-E040-A8C02A162DC2}"
+            "ListPosition": 2
         },
         {
             "PerformanceStepId": "{412FFAFC-EC2A-C85C-E040-A8C02A162DC2}",
-            "EventId": "{412FFAFC-E90B-C85C-E040-A8C02A162DC2}",
             "Title": "Coordinate the movement of cargo, equipment, and personnel from the applicable staging areas to the loading area.",
-            "ListPosition": 3,
-            "IsDeleted": -2147483648,
-            "CreatedBy": "",
-            "CreatedDate": "0001-01-01T00:00:00",
-            "EditedBy": "",
-            "EditedDate": "0001-01-01T00:00:00",
-            "ID": "{412FFAFC-EC2A-C85C-E040-A8C02A162DC2}"
+            "ListPosition": 3
         },
         {
             "PerformanceStepId": "{412FFAFC-EC2B-C85C-E040-A8C02A162DC2}",
-            "EventId": "{412FFAFC-E90B-C85C-E040-A8C02A162DC2}",
             "Title": "Monitor the embarkation and stowage of cargo and equipment.",
-            "ListPosition": 4,
-            "IsDeleted": -2147483648,
-            "CreatedBy": "",
-            "CreatedDate": "0001-01-01T00:00:00",
-            "EditedBy": "",
-            "EditedDate": "0001-01-01T00:00:00",
-            "ID": "{412FFAFC-EC2B-C85C-E040-A8C02A162DC2}"
+            "ListPosition": 4
         },
         {
             "PerformanceStepId": "{412FFAFC-EC2C-C85C-E040-A8C02A162DC2}",
-            "EventId": "{412FFAFC-E90B-C85C-E040-A8C02A162DC2}",
             "Title": "Compute the estimate of time to complete loading operations.",
-            "ListPosition": 5,
-            "IsDeleted": -2147483648,
-            "CreatedBy": "",
-            "CreatedDate": "0001-01-01T00:00:00",
-            "EditedBy": "",
-            "EditedDate": "0001-01-01T00:00:00",
-            "ID": "{412FFAFC-EC2C-C85C-E040-A8C02A162DC2}"
+            "ListPosition": 5
         },
         {
             "PerformanceStepId": "{412FFAFC-EC2D-C85C-E040-A8C02A162DC2}",
-            "EventId": "{412FFAFC-E90B-C85C-E040-A8C02A162DC2}",
             "Title": "Prepare and submit loading reports, as required.",
-            "ListPosition": 6,
-            "IsDeleted": -2147483648,
-            "CreatedBy": "",
-            "CreatedDate": "0001-01-01T00:00:00",
-            "EditedBy": "",
-            "EditedDate": "0001-01-01T00:00:00",
-            "ID": "{412FFAFC-EC2D-C85C-E040-A8C02A162DC2}"
+            "ListPosition": 6
         },
         {
             "PerformanceStepId": "{412FFAFC-EC28-C85C-E040-A8C02A162DC2}",
-            "EventId": "{412FFAFC-E90B-C85C-E040-A8C02A162DC2}",
             "Title": "Determine supporting supply, equipment, and personnel requirements.",
-            "ListPosition": 1,
-            "IsDeleted": -2147483648,
-            "CreatedBy": "",
-            "CreatedDate": "0001-01-01T00:00:00",
-            "EditedBy": "",
-            "EditedDate": "0001-01-01T00:00:00",
-            "ID": "{412FFAFC-EC28-C85C-E040-A8C02A162DC2}"
+            "ListPosition": 1
         }
     ],
-    "DodicList": [],
-    "Billets": [],
-    "MOS": [
-        {
-            "MosID": "{A29D2544-F24F-444A-A538-8FF85A6BD87B}",
-            "MosCode": "0431",
-            "Description": "Logistics/Embarkation Specialist",
-            "OccFieldCode": "04",
-            "MosType": "EPE",
-            "IsActive": true,
-            "StatusDate": "2017-06-07T22:24:20",
-            "ExpectedStatus": "",
-            "DraftStatus": "APPROVED",
-            "MosIdAndDescription": "{A29D2544-F24F-444A-A538-8FF85A6BD87B}|Logistics/Embarkation Specialist",
-            "IsOfficerMos": false,
-            "IsPreferred": true
-        }
-    ],
-    "Ranks": [
-        {
-            "RankCode": "CPL",
-            "Description": "Corporal",
-            "Service": "USMC",
-            "Paygrade": "E4",
-            "ListPosition": 4,
-            "ShortDesc": "Cpl"
-        }
-    ],
-    "SupportedMETs": [],
-    "RelatedEvents": [],
-    "ChainedEvents": [],
     "PreReqEvents": [
         {
             "_IsECoded": "N",
@@ -460,23 +371,5 @@ angular.module('tspApp').constant('theEvent', {
             "IsValid": true,
             "EventType": "New"
         }
-    ],
-    "IntSupportedEvents": [],
-    "IntSupportingEvents": [],
-    "ExtSupportedEvents": [],
-    "ExtSupportingEvents": [],
-    "EventSimulations": [],
-    "EventComponents": [],
-    "EditedDate": "0001-01-01T00:00:00",
-    "CreatedDate": "0001-01-01T00:00:00",
-    "SaveResult": null,
-    "EditedBy": "",
-    "ShowIntSupported": false,
-    "ShowIntSupporting": false,
-    "ShowExtSupported": false,
-    "ShowExtSupporting": false,
-    "ShowChained": true,
-    "ShowRelated": true,
-    "CorePlusCode": "COREPLUS",
-    "PrimarySimCodeName": ""
+    ]
 });

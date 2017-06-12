@@ -28,3 +28,31 @@ label{
   font-weight: bold;
 }
 
+.border{
+  border:1px solid #ccc;
+  min-height: 100px;
+}
+
+.mce-edit-focus.border{
+  border:none;
+}
+
+.section{
+  border:20px solid white;
+  transition: all .2s ease-in-out;
+  transition-timing-function:cubic-bezier(0.5, 0, 0.1, 1);
+  transition-duration:400ms;
+}
+
+.section:hover{
+  border:20px solid #eee;
+}
+
+.subSection{
+  margin-bottom: 10px;
+}
+
+.fa-drag-handle:before {
+  content: "\f142 \f142";
+  letter-spacing: 2px;
+}

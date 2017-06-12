@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
     <link rel="stylesheet" href="app.css">
-    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
 </head>
 <body>
 
 <div class="container">
-
 
     <div ng-controller="mainCtrl as vm" class="form">
 
@@ -30,16 +29,16 @@
             <div class="col-xs-4 ">
                 <div class="form-horizontal">
                     <div class="form-group">
-                        <label class="control-label col-xs-6">Time To Train (Hours)</label>
+                        <label for="timeToTrain" class="control-label col-xs-6">Time To Train (Hours)</label>
                         <div class="col-xs-6">
-                            <input type="text" class="form-control" name="timeToTrain" ng-model="vm.TimeToTrain">
+                            <input type="text" id="timeToTrain" class="form-control" name="timeToTrain" ng-model="vm.TimeToTrain">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-xs-6">Time To Test (Minutes)</label>
+                        <label for="timeToTest" class="control-label col-xs-6">Time To Test (Minutes)</label>
                         <div class="col-xs-6">
-                            <input type="text" class="form-control" name="timeToTest" ng-model="vm.TimeToTest">
+                            <input id="timeToTest" type="text" class="form-control" name="timeToTest" ng-model="vm.TimeToTest">
                         </div>
                     </div>
                 </div>
@@ -73,7 +72,6 @@
                 {{::reference.Title}}
             </li>
         </ol>
-
 
         <div>
             <label>Additional Range/Training Area</label>
@@ -135,8 +133,10 @@
             <div class="form-group" ng-repeat="question in vm.Questions | orderBy: 'Sequence'">
                 <div class="col-xs-1">
                     <button class="btn btn-danger pull-right" ng-click="vm.deleteQuestion(question)">X</button>
+                    <label class="control-label">{{question.Sequence}}.</label>
                 </div>
                 <div class="col-sm-10">
+
                     <input type="text" class="form-control" placeholder="(Enter Question)" ng-model="question.Text">
                 </div>
             </div>
@@ -148,18 +148,43 @@
             </div>
 
             <div class="form-group">
-                <div class="col-sm-10">git
-                    <label for="Instructor Note" class="control-label">Instructor Note</label>
-                    <textarea class="form-control" rows="5" id="Instructor Note" placeholder="Instructor Note" ng-model="vm.InstructorNote"></textarea>
-                </div>
+                <label class="control-label">Instructor Note</label>
+                <div ui-tinymce="tinymceOptions" ng-model="vm.InstructorNote" class="border"></div>
             </div>
-
-            <div ng-repeat="performanceStep in vm.tnrEvent.PerformanceSteps | orderBy: 'ListPosition'">
-                <strong>Performance Step {{::performanceStep.ListPosition}}:</strong>{{::performanceStep.Title}}
-                <textarea ui-tinymce="vm.tinymceOptions" ng-model="performanceStep.Title"></textarea>
-            </div>
-
         </div>
+
+        <div class="form-inline">
+            <label for="LessonID" class="control-label">LessonID</label>
+            <input type="text" class="form-control" id="LessonID" ng-model="vm.LessonId">
+
+            <label for="LessonID" class="control-label">Lesson Name</label>
+            <input type="text" class="form-control" id="LessonName" ng-model="vm.LessonName">
+        </div>
+
+        <hr>
+
+
+        <ul ui-sortable="{handle: '.myHandle'}" ng-model='vm.Sections' class="list-group">
+            <li class="list-group-item" ng-repeat="section in vm.Sections">
+                <div class="section">
+                    <div class="btn myHandle"><i class="glyphicon-sort glyphicon"></i></div>
+                    <button ng-click="vm.deleteSection(section)" class="btn btn-sm btn-danger">X</button>
+                    <non-performance-step-section section="section"></non-performance-step-section>
+                </div>
+            </li>
+        </ul>
+
+        <div class="col-xs-offset-1">
+            <button class="btn btn-primary" ng-click="vm.addSection()">Add Section</button>
+        </div>
+
+        <hr>
+
+        <div ng-repeat="performanceStep in vm.tnrEvent.PerformanceSteps | orderBy: 'ListPosition'">
+            <performance-step-section performance-step="performanceStep"></performance-step-section>
+        </div>
+
+
     </div>
 </div>
 
@@ -167,10 +192,13 @@
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/tinymce/tinymce.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
+<script src="bower_components/lodash/dist/lodash.min.js"></script>
+<script src="bower_components/angular-ui-sortable/sortable.min.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script src="app.js"></script>
 <script src="foo.js"></script>
 

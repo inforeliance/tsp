@@ -1,0 +1,19 @@
+<div class="section">
+    <h4><strong>Performance Step {{::vm.performanceStep.ListPosition}}:</strong>{{::vm.performanceStep.Title}}</h4>
+    <ul ui-sortable="{handle: '.myHandle'}" ng-model='vm.performanceStep.Sections' class="list-group">
+        <li class="list-group-item" ng-repeat="section in vm.performanceStep.Sections">
+            <div class="btn myHandle"><i class="glyphicon-sort glyphicon"></i></div>
+            <button ng-click="vm.DeleteSection(section)" class="btn btn-sm btn-danger">X</button>
+            <h4 class="list-group-item-heading">Section {{$index+1}} Text</h4>
+            <div ui-tinymce="$root.tinymceOptions" ng-model="section.SectionText" class="border"></div>
+        </li>
+    </ul>
+
+    <div class="col-xs-offset-1">
+        <button class="btn btn-primary" ng-click="vm.AddSection(vm.performanceStep)">Add Section</button>
+    </div>
+
+    <hr>
+    <strong>Instructor Note</strong>
+    <div ui-tinymce="$root.tinymceOptions" ng-model="vm.performanceStep.InstructorNote" class="border"></div>
+</div>
