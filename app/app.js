@@ -1,5 +1,5 @@
 'use strict';
-angular.module('tspApp', ['ui.tinymce', 'ui.sortable']).controller('mainCtrl', function (theEvent, $window) {
+angular.module('tspApp', ['ui.tinymce', 'ui.sortable','ui.bootstrap']).controller('mainCtrl', function (theEvent, $window) {
     var vm = this;
     vm.Questions = [];
     vm.Sections = [{Sequence:1}];
@@ -78,7 +78,18 @@ angular.module('tspApp', ['ui.tinymce', 'ui.sortable']).controller('mainCtrl', f
             scope: {
                 section: '=section'
             },
-            controller: function (_) {
+            controllerAs: 'vm',
+            bindToController: true
+        };
+    })
+    .directive('comment', function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'non-perf-step-section.html',
+            scope: {
+                section: '=section'
+            },
+            controller: function () {
                 var vm = this;
             },
             controllerAs: 'vm',

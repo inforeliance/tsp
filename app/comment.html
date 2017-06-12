@@ -1,0 +1,8 @@
+<button uib-popover="" type="button" class="btn btn-default"><i class="glyphicon glyphicon-comment text-info"></i> </button>
+<script type="text/ng-template" id="myPopoverTemplate.html">
+    <div>{{dynamicPopover.content}}</div>
+    <div class="form-group">
+        <label>Comment:</label>
+        <input type="text" ng-model="dynamicPopover.title" class="form-control">
+    </div>
+</script>
