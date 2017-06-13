@@ -28,7 +28,7 @@
 <div class="container">
 
     <div ng-controller="mainCtrl as vm" class="form">
-
+        <pre>{{vm | json}}</pre>
         <div class="row">
             <div class="col-xs-7">
                 <div>
@@ -179,7 +179,6 @@
         </div>
 
         <hr>
-
 
         <ul ui-sortable="{handle: '.myHandle'}" ng-model='vm.Sections' class="list-group">
             <li class="list-group-item" ng-repeat="section in vm.Sections">

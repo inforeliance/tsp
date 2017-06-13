@@ -1,8 +1,7 @@
 <div class="form-group">
-    <input type="text" class="form-control" id="sectionName" placeholder="Section Name" ng-model="vm.SectionName">
+    <input type="text" class="form-control" id="sectionName" placeholder="Section Name" ng-model="vm.section.SectionName">
 </div>
-
 <div class="clearfix"></div>
 <div class="form-group">
-    <div ui-tinymce="$root.tinymceOptions" ng-model="section.SectionText" class="border"></div>
+    <div ui-tinymce="$root.tinymceOptions" ng-model="vm.section.SectionText" class="border"></div>
 </div>
