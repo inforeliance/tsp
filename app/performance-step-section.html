@@ -7,14 +7,21 @@
             <comment comment="section.Comment"></comment>
             <h4 class="list-group-item-heading">Section {{$index+1}} Text</h4>
             <div ui-tinymce="$root.tinymceOptions" ng-model="section.SectionText" class="border"></div>
+
+            <hr>
+
+            <input type="file" multiple ng-model="vm" name="file[]" /><br/>
+
         </li>
     </ul>
+
+    <hr>
+    <strong>Instructor Note <comment comment="vm.performanceStep.InstructorNoteComment"></comment></strong>
+    <div ui-tinymce="$root.tinymceOptions" ng-model="vm.performanceStep.InstructorNote" class="border"></div>
 
     <div class="col-xs-offset-1">
         <button class="btn btn-primary" ng-click="vm.AddSection(vm.performanceStep)">Add Section</button>
     </div>
 
-    <hr>
-    <strong>Instructor Note <comment comment="vm.performanceStep.InstructorNoteComment"></comment></strong>
-    <div ui-tinymce="$root.tinymceOptions" ng-model="vm.performanceStep.InstructorNote" class="border"></div>
+
 </div>

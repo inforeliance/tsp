@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
     <link rel="stylesheet" href="app.css">
+
+
     <script src="bower_components/lodash/dist/lodash.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
@@ -17,6 +19,7 @@
     <script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
     <script src="bower_components/angular-ui-sortable/sortable.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
     <script src="app.js"></script>
     <script src="foo.js"></script>
 
@@ -25,182 +28,191 @@
 <body>
 
 <div class="container">
-
     <div ng-controller="mainCtrl as vm" class="form">
-        <pre ng-hide="true">{{vm | json}}</pre>
-        <div class="row">
-            <div class="col-xs-7">
-                <div>
-                    <label>Condition</label> {{::vm.tnrEvent.Condition}}
+        <form method="post" enctype="multipart/form-data">
+            <pre ng-hide="true">{{vm | json}}</pre>
+            <div class="row">
+                <div class="col-xs-7">
+                    <div>
+                        <label>Condition</label> {{::vm.tnrEvent.Condition}}
+                    </div>
+                    <div>
+                        <label>Standard</label> {{::vm.tnrEvent.Standard}}
+                    </div>
                 </div>
-                <div>
-                    <label>Standard</label> {{::vm.tnrEvent.Standard}}
-                </div>
-            </div>
-            <div class="col-xs-4 ">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <label for="timeToTrain" class="control-label col-xs-6">Time To Train (Hours)</label>
-                        <div class="col-xs-6">
-                            <input type="text" id="timeToTrain" class="form-control" name="timeToTrain"
-                                   ng-model="vm.TimeToTrain">
+                <div class="col-xs-4 ">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="timeToTrain" class="control-label col-xs-6">Time To Train (Hours)</label>
+                            <div class="col-xs-6">
+                                <input type="text" id="timeToTrain" class="form-control" name="timeToTrain"
+                                       ng-model="vm.TimeToTrain">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeToTest" class="control-label col-xs-6">Time To Test (Minutes)</label>
+                            <div class="col-xs-6">
+                                <input id="timeToTest" type="text" class="form-control" name="timeToTest"
+                                       ng-model="vm.TimeToTest">
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="timeToTest" class="control-label col-xs-6">Time To Test (Minutes)</label>
-                        <div class="col-xs-6">
-                            <input id="timeToTest" type="text" class="form-control" name="timeToTest"
-                                   ng-model="vm.TimeToTest">
-                        </div>
-                    </div>
                 </div>
-
-            </div>
-            <div class="col-xs-1">
-                <comment comment="vm.TimeToTrainComment"></comment>
-            </div>
-        </div>
-
-        <div>
-            <label>Performance Steps</label>
-        </div>
-        <ol>
-            <li ng-repeat="performanceStep in ::vm.tnrEvent.PerformanceSteps | orderBy: 'ListPosition'">
-                {{::performanceStep.Title}}
-            </li>
-        </ol>
-
-        <div>
-            <label>Prerequisite Events</label>
-        </div>
-        <ul>
-            <li ng-repeat="preReqEvent in ::vm.tnrEvent.PreReqEvents">
-                {{::preReqEvent.Title}}
-            </li>
-        </ul>
-
-        <div>
-            <label>References</label>
-        </div>
-        <ol>
-            <li ng-repeat="reference in ::vm.tnrEvent.References | orderBy: 'Title'">
-                {{::reference.Title}}
-            </li>
-        </ol>
-
-        <div>
-            <label>Additional Range/Training Area</label>
-            {{::vm.tnrEvent.Range}}
-        </div>
-
-        <div>
-            <label>Aircraft</label>
-            {{::vm.tnrEvent.Aircraft}}
-        </div>
-
-        <div>
-            <label>Rooms / Building</label>
-            {{::vm.tnrEvent.Rooms}}
-        </div>
-
-        <div>
-            <label>Equipment</label>
-            {{::vm.tnrEvent.Equipment}}
-        </div>
-
-        <div>
-            <label>Material</label>
-            {{::vm.tnrEvent.Material}}
-        </div>
-
-        <div>
-            <label>Units / Personnel</label>
-            {{::vm.tnrEvent.UnitsAndPersonnel}}
-        </div>
-
-        <div>
-            <label>Other Support Reqs</label>
-            {{::vm.tnrEvent.OtherSupportingRequirements}}
-        </div>
-
-        <div>
-            <label>Administrative Instructions</label>
-            {{::vm.tnrEvent.AdministrativeInstructions}}
-        </div>
-
-        <div ng-if="vm.tnrEvent.RoadMiles">
-            <label>Road Miles</label>
-            {{::vm.tnrEvent.RoadMiles}}
-        </div>
-
-        <div>
-            <label>Equipment Hours</label>
-            {{::vm.tnrEvent.EquipmentHours}}
-        </div>
-
-        <div>
-            <label>Special Personnel Certs</label>
-            {{::vm.tnrEvent.SpecialPersonnelCerts}}
-        </div>
-
-        <div class="form-horizontal">
-            <legend>Questions</legend>
-            <div class="form-group" ng-repeat="question in vm.Questions | orderBy: 'Sequence'">
-                <button class="btn btn-sm btn-danger " ng-click="vm.deleteQuestion(question)"><i class="glyphicon-remove glyphicon"></i></button>
-                <comment comment="question.Comment"></comment>
-                <label class="control-label">{{question.Sequence}}.</label>
-                <input type="text" class="form-control" placeholder="(Enter Question)" ng-model="question.Text">
-            </div>
-
-            <div class="form-group">
-                <div class="col-xs-offset-1 col-sm-1">
-                    <button type="button" ng-click="vm.addQuestion()" class=" btn btn-primary">Add Question</button>
+                <div class="col-xs-1">
+                    <comment comment="vm.TimeToTrainComment"></comment>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label">Instructor Note
-                    <comment comment="vm.InstructorNoteComment"></comment>
-                </label>
-                <div ui-tinymce="tinymceOptions" ng-model="vm.InstructorNote" class="border"></div>
+            <div>
+                <label>Performance Steps</label>
             </div>
-        </div>
+            <ol>
+                <li ng-repeat="performanceStep in ::vm.tnrEvent.PerformanceSteps | orderBy: 'ListPosition'">
+                    {{::performanceStep.Title}}
+                </li>
+            </ol>
 
-        <div class="form-inline">
-            <label for="LessonID" class="control-label">LessonID</label>
-            <input type="text" class="form-control" id="LessonID" ng-model="vm.LessonId">
+            <div>
+                <label>Prerequisite Events</label>
+            </div>
+            <ul>
+                <li ng-repeat="preReqEvent in ::vm.tnrEvent.PreReqEvents">
+                    {{::preReqEvent.Title}}
+                </li>
+            </ul>
 
-            <label for="LessonID" class="control-label">Lesson Name</label>
-            <input type="text" class="form-control" id="LessonName" ng-model="vm.LessonName">
+            <div>
+                <label>References</label>
+            </div>
+            <ol>
+                <li ng-repeat="reference in ::vm.tnrEvent.References | orderBy: 'Title'">
+                    {{::reference.Title}}
+                </li>
+            </ol>
 
-            <comment comment="vm.LessonIDComment"></comment>
-        </div>
+            <div>
+                <label>Additional Range/Training Area</label>
+                {{::vm.tnrEvent.Range}}
+            </div>
 
-        <hr>
+            <div>
+                <label>Aircraft</label>
+                {{::vm.tnrEvent.Aircraft}}
+            </div>
 
-        <ul ui-sortable="{handle: '.myHandle'}" ng-model='vm.Sections' class="list-group">
-            <li class="list-group-item" ng-repeat="section in vm.Sections">
-                <div class="section">
-                    <div class="btn myHandle text-muted"><i class="glyphicon-th glyphicon"></i></div>
-                    <button ng-click="vm.deleteSection(section)" class="btn btn-sm btn-danger"><i
+            <div>
+                <label>Rooms / Building</label>
+                {{::vm.tnrEvent.Rooms}}
+            </div>
+
+            <div>
+                <label>Equipment</label>
+                {{::vm.tnrEvent.Equipment}}
+            </div>
+
+            <div>
+                <label>Material</label>
+                {{::vm.tnrEvent.Material}}
+            </div>
+
+            <div>
+                <label>Units / Personnel</label>
+                {{::vm.tnrEvent.UnitsAndPersonnel}}
+            </div>
+
+            <div>
+                <label>Other Support Reqs</label>
+                {{::vm.tnrEvent.OtherSupportingRequirements}}
+            </div>
+
+            <div>
+                <label>Administrative Instructions</label>
+                {{::vm.tnrEvent.AdministrativeInstructions}}
+            </div>
+
+            <div ng-if="vm.tnrEvent.RoadMiles">
+                <label>Road Miles</label>
+                {{::vm.tnrEvent.RoadMiles}}
+            </div>
+
+            <div>
+                <label>Equipment Hours</label>
+                {{::vm.tnrEvent.EquipmentHours}}
+            </div>
+
+            <div>
+                <label>Special Personnel Certs</label>
+                {{::vm.tnrEvent.SpecialPersonnelCerts}}
+            </div>
+
+            <div class="form-horizontal">
+                <legend>Questions</legend>
+                <div class="form-group" ng-repeat="question in vm.Questions | orderBy: 'Sequence'">
+                    <button class="btn btn-sm btn-danger " ng-click="vm.deleteQuestion(question)"><i
                             class="glyphicon-remove glyphicon"></i></button>
-                    <comment comment="section.Comment"></comment>
-                    <non-performance-step-section section="section"></non-performance-step-section>
+                    <comment comment="question.Comment"></comment>
+                    <label class="control-label">{{question.Sequence}}.</label>
+                    <input type="text" class="form-control" placeholder="(Enter Question)" ng-model="question.Text">
                 </div>
-            </li>
-        </ul>
 
-        <div class="col-xs-offset-1">
-            <button class="btn btn-primary" ng-click="vm.addSection()">Add Section</button>
-        </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-1 col-sm-1">
+                        <button type="button" ng-click="vm.addQuestion()" class=" btn btn-primary">Add Question</button>
+                    </div>
+                </div>
 
-        <hr>
+                <div class="form-group">
+                    <label class="control-label">Instructor Note
+                        <comment comment="vm.InstructorNoteComment"></comment>
+                    </label>
+                    <div ui-tinymce="tinymceOptions" ng-model="vm.InstructorNote" class="border"></div>
+                </div>
+            </div>
 
-        <div ng-repeat="performanceStep in vm.tnrEvent.PerformanceSteps | orderBy: 'ListPosition'">
-            <performance-step-section performance-step="performanceStep"></performance-step-section>
-        </div>
+            <div class="form-inline">
+                <label for="LessonID" class="control-label">LessonID</label>
+                <input type="text" class="form-control" id="LessonID" ng-model="vm.LessonId">
+
+                <label for="LessonID" class="control-label">Lesson Name</label>
+                <input type="text" class="form-control" id="LessonName" ng-model="vm.LessonName">
+
+                <comment comment="vm.LessonIDComment"></comment>
+            </div>
+
+            <hr>
+
+            <ul ui-sortable="{handle: '.myHandle'}" ng-model='vm.Sections' class="list-group">
+                <li class="list-group-item" ng-repeat="section in vm.Sections">
+                    <div class="section">
+                        <div class="btn myHandle text-muted"><i class="glyphicon-th glyphicon"></i></div>
+                        <button ng-click="vm.deleteSection(section)" class="btn btn-sm btn-danger"><i
+                                class="glyphicon-remove glyphicon"></i></button>
+                        <comment comment="section.Comment"></comment>
+                        <non-performance-step-section section="section"></non-performance-step-section>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="col-xs-offset-1">
+                <button class="btn btn-primary" ng-click="vm.addSection()">Add Section</button>
+            </div>
+
+            <hr>
+
+            <div ng-repeat="performanceStep in vm.tnrEvent.PerformanceSteps | orderBy: 'ListPosition'">
+                <performance-step-section performance-step="performanceStep"></performance-step-section>
+            </div>
+
+            <div class="well well-lg">
+                <button class="btn-lg btn btn-success" ng-click="vm.save()">Save</button>
+                <uib-progressbar value="vm.uploadProgress">{{vm.uploadProgress}}</uib-progressbar>
+            </div>
+        </form>
     </div>
+
 </div>
+
 </body>
 </html>
